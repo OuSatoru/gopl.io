@@ -5,20 +5,25 @@
 //!+
 
 // Echo1 prints its command-line arguments.
+
+//ex1.3: timeit with echo3 but too fast..
 package main
 
 import (
 	"fmt"
 	"os"
+	"time"
 )
 
 func main() {
 	var s, sep string
+	t := time.Now()
 	for i := 1; i < len(os.Args); i++ {
 		s += sep + os.Args[i]
 		sep = " "
 	}
 	fmt.Println(s)
+	fmt.Println(time.Since(t))
 }
 
 //!-
