@@ -23,7 +23,7 @@ func main() {
 		sep = " "
 	}
 	fmt.Println(s)
-	fmt.Println(time.Since(t))
+	fmt.Println(time.Since(t).Seconds())
 }
 
 //!-
