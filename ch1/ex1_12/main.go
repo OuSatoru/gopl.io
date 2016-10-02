@@ -3,14 +3,14 @@
 package main
 
 import (
-	"io"
-	"image/gif"
 	"image"
-	"math"
 	"image/color"
+	"image/gif"
+	"io"
+	"log"
+	"math"
 	"math/rand"
 	"net/http"
-	"log"
 	"strconv"
 )
 
@@ -21,7 +21,7 @@ func main() {
 	log.Fatal(http.ListenAndServe(":8000", nil))
 }
 
-func handler(w http.ResponseWriter, r *http.Request)  {
+func handler(w http.ResponseWriter, r *http.Request) {
 	cycle, _ := strconv.Atoi(r.FormValue("cycles"))
 	lissajous(w, cycle)
 }
@@ -44,7 +44,7 @@ func lissajous(out io.Writer, cycle int) {
 			x := math.Sin(t)
 			y := math.Sin(t*freq + phase)
 			img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5),
-				1)  //1=blackindex
+				1) //1=blackindex
 		}
 		phase += 0.1
 		anim.Delay = append(anim.Delay, delay)
